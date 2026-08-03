@@ -1,5 +1,6 @@
 worker:
-  apiConfig: server
+  apiConfig: selfHostedServer
   config:
     workPool: "kubernetes-pool"
-prefectApiUrl: "http://prefect-server.document-triage.svc.cluster.local:4200/api"
+  selfHostedServerApiConfig:
+    apiUrl: "http://prefect-server.document-triage.svc.cluster.local:4200/api"

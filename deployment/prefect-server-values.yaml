@@ -1,6 +1,5 @@
 postgresql:
   auth:
     existingSecret: postgres-password
-server:
-  ingress:
-    enabled: false
+ingress:
+  enabled: false
