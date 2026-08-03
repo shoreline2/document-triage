@@ -1,0 +1,20 @@
+apiVersion: argoproj.io/v1alpha1
+kind: Application
+metadata:
+  name: prefect-worker
+  namespace: argocd
+spec:
+  project: default
+  sources:
+    - repoURL: https://prefecthq.github.io/prefect-helm
+      chart: prefect-worker
+      targetRevision: "2026.7.31163938"
+      helm:
+        valueFiles:
+          - $values/deployment/prefect-worker-values.yaml
+    - repoURL: https://github.com/shoreline2/document-triage
+      targetRevision: HEAD
+      ref: values
+  destination:
+    server: https://kubernetes.default.svc
+    namespace: document-triage
