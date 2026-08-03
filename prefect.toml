@@ -1,0 +1,4 @@
+[server.database]
+password = "prefect"
+host = "localhost"
+port = 5432
