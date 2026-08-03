@@ -1,5 +1,15 @@
-postgresql:
-  auth:
-    existingSecret: postgres-password
 ingress:
   enabled: false
+postgresql:
+  enabled: false
+server:
+  database:
+    driver: postgresql+asyncpg
+    # Service endpoint created automatically by CNPG: <cluster-name>-rw.<namespace>.svc.cluster.local
+    host: postgres-cluster-rw.document-triage.svc.cluster.local
+    port: 5432
+    name: prefect
+    user: prefect
+    passwordSecret:
+      name: postgres-password-secret
+      key: password
