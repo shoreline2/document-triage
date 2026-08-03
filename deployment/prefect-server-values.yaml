@@ -1,21 +1,16 @@
-ingress:
-  enabled: false
-
 postgresql:
   enabled: false
 
-# Database configuration lives at the top level
-database:
-  driver: postgresql+asyncpg
-  # Service endpoint created automatically by CNPG: <cluster-name>-rw.<namespace>.svc.cluster.local
-  host: postgres-cluster-rw.document-triage.svc.cluster.local
-  port: 5432
-  name: prefect
-  user: prefect
-  passwordSecret:
-    name: postgres-password-secret
-    key: password
+externalDatabase:
+  enabled: true
+
+# Point the chart to your CNPG secret
+externalDatabase:
+  existingSecret: "postgres-cluster-app"
+  existingSecretKey: "uri" # Change to match CNPG's secret key (e.g., uri, connection-string, or psql)
+
+secret:
+  create: false
 
 server:
-  # Put other server-specific configs here if needed (e.g., replicas, env)
-  enabled: true
+  env: []

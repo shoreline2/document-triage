@@ -14,8 +14,7 @@ spec:
     initdb:
       database: prefect
       owner: prefect
-      secret:
-        name: postgres-password-secret
+      # REMOVED secret block so CNPG automatically generates `postgres-cluster-app`
 
   resources:
     requests:
